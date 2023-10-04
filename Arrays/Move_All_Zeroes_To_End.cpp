@@ -26,7 +26,7 @@ int main()
     moveToEnd(arr, n);
 
     for (int i : arr)
-        cout << i << endl;
+        cout << i << " ";
 
     return 0;
 }

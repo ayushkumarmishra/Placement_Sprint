@@ -10,12 +10,12 @@ vector<int> solve(int arr[], int k, int n)
     list<int> ls;
     ls.push_back(arr[j]);
     vector<int> v;
-    if (k > n)
-    {
-        int maxi = max(v.begin(), v.end());
-        v.push_back(maxi);
-        return v;
-    }
+    // if (k > n)
+    // {
+    //     int maxi = max(v.begin(), v.end());
+    //     v.push_back(maxi);
+    //     return v;
+    // }
     while (j < n)
     {
         while (ls.size() > 0 && ls.back() < arr[j])
