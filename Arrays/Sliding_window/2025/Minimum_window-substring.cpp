@@ -70,5 +70,48 @@ for (i = 0 ==> n) {  // Outer loop to iterate through the starting index of subs
 }
 s.substr(startIndex, minLength); // Return the minimum substring
 
-1. Method - 1: Sliding Window Approach
+    
+    """ Optimized approach """
+
+1. Method - 1: Sliding Window Approach  : 
+
+
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        int n = s.size();
+        int m = t.size();
+        int count = 0;
+        int min_length = INT_MAX;
+        int start_indx = -1;
+        int left_ptr = 0, right_ptr = 0;
+
+        map<char, int> mp;
+
+        for (int i = 0; i < m; i++) {
+            mp[t[i]]++;
+        }
+
+        while (right_ptr < n) {
+            if (mp[s[right_ptr]] > 0) {
+                count++;
+            }
+            mp[s[right_ptr]]--;
+
+            while (count == m) {
+                if ((right_ptr - left_ptr + 1) < min_length) {
+                    min_length = (right_ptr - left_ptr) + 1;
+                    start_indx = left_ptr;
+                }
+                mp[s[left_ptr]]++;
+                if (mp[s[left_ptr]] > 0)
+                    count--;
+                left_ptr++;
+            }
+            right_ptr++;
+        }
+        return start_indx == -1 ? "" : s.substr(start_indx, min_length);
+    }
+};
+
 */
